@@ -10,8 +10,8 @@ function Contact({ links }) {
       <div className="container contact-card">
         <SectionHeading
           label="CONTACT"
-          title={<span id="contact-title">一緒に何かつくりませんか？</span>}
-          description="Web制作のご相談や、ご質問がありましたらお気軽にご連絡ください。"
+          title={<span id="contact-title">連絡先</span>}
+          description="制作のご相談や、ご質問がありましたらお気軽にご連絡ください。"
         />
         <div className="contact-links">
           <a href={links.email.href}>

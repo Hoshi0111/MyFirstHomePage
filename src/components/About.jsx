@@ -14,7 +14,7 @@ function About({ profile }) {
             </div>
             <div>
               <dt>専門</dt>
-              <dd>Frontend Development</dd>
+              <dd>Game Programmer</dd>
             </div>
           </dl>
         </div>

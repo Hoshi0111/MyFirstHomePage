@@ -2,23 +2,12 @@
 
 Vite、React、JavaScript、CSSで作成した1ページ構成の個人ポートフォリオです。
 
-## 必要な環境
-
-- Node.js 24 LTS以降
-- npm
-- Git
-- Cloudflareアカウント（公開時のみ）
-
-このリポジトリにはローカル検証用Node.jsを`.tools`へ配置していますが、`.gitignore`の対象です。別のPCでは[Node.js公式サイト](https://nodejs.org/)からLTS版をインストールしてください。
-
 ## ローカルで起動する
 
 ```bash
 npm install
 npm run dev
 ```
-
-表示されたローカルURLをブラウザで開きます。
 
 ## コマンド
 
@@ -29,26 +18,6 @@ npm run dev
 | `npm run build` | 公開用ファイルを`dist`へ生成 |
 | `npm run preview` | 生成したサイトをローカル確認 |
 | `npm run deploy` | ビルド後、Cloudflare Pagesへ手動公開 |
-
-## 内容を変更する
-
-名前、自己紹介、スキル、GitHub URL、メールアドレスは`src/data/portfolio.js`にまとめています。
-
-ページタイトルと検索結果向けの説明文は`index.html`で変更できます。
-
-## GitHubへ登録する
-
-GitHubで空のリポジトリを作成してから、次のコマンドを実行します。
-
-```bash
-git add .
-git commit -m "Create React portfolio"
-git branch -M main
-git remote add origin https://github.com/yourname/my-home-page.git
-git push -u origin main
-```
-
-`yourname`は自分のGitHubユーザー名へ変更してください。
 
 ## Cloudflare Pagesで自動公開する
 

@@ -6,8 +6,8 @@ function Skills({ skills }) {
       <div className="container">
         <SectionHeading
           label="SKILLS"
-          title={<span id="skills-title">できること</span>}
-          description="基本を大切にしながら、扱いやすく長く使えるWebサイトを制作します。"
+          title={<span id="skills-title">開発経験</span>}
+          description="ゲーム制作やWeb開発、AIやロボティクスの研究など、幅広い分野での経験があります。"
         />
         <ul className="skill-grid">
           {skills.map((skill, index) => (
