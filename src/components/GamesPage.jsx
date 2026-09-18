@@ -2,51 +2,32 @@ import { games } from '../data/games.js'
 
 const repositoryUrl = 'https://github.com/Hoshi0111/Portfolio'
 const toolRepositoryUrl = 'https://github.com/Hoshi0111/unity-shiritori-dictionary'
+const gameSections = [
+  { id: 'unityroom', title: 'UnityRoom' },
+  { id: 'web', title: 'Webで遊べるゲーム' },
+  { id: 'in-progress', title: '制作中のゲーム' },
+]
 
-function GameGallery({ game }) {
-  return (
-    <div className={`game-gallery game-gallery-${game.id} ${game.images.length === 1 ? 'game-gallery-single' : ''}`}>
-      {game.images.map((image) => (
-        <figure className="game-shot" key={image.src}>
-          <img src={image.src} alt={image.alt} loading="lazy" />
-        </figure>
-      ))}
-    </div>
+function GameCard({ game }) {
+  const content = (
+    <>
+      <img className="game-card-image" src={game.image} alt={game.imageAlt} />
+      <span className="game-card-copy">
+        <span className="game-card-title">{game.title} {game.playUrl && <span aria-hidden="true">↗</span>}</span>
+        <span className="game-card-description">{game.description}</span>
+      </span>
+    </>
   )
-}
 
-function GameArticle({ game }) {
   return (
-    <article className="game-project" id={game.id}>
-      <div className="game-project-heading">
-        <span className="game-number" aria-hidden="true">{game.number}</span>
-        <div>
-          <p className="game-subtitle">{game.subtitle}</p>
-          <h2>{game.title}</h2>
-        </div>
-      </div>
-
-      <GameGallery game={game} />
-
-      <div className="game-details">
-        <div>
-          <p className="game-summary">{game.summary}</p>
-          <p className="game-contribution">{game.contribution}</p>
-        </div>
-        <div className="game-facts">
-          <ul className="game-feature-list">
-            {game.features.map((feature) => <li key={feature}>{feature}</li>)}
-          </ul>
-          <ul className="game-tools" aria-label="使用技術">
-            {game.tools.map((tool) => <li key={tool}>{tool}</li>)}
-          </ul>
-          {game.playUrl && (
-            <a className="game-play-link" href={game.playUrl} target="_blank" rel="noreferrer">
-              UnityRoomで遊ぶ <span aria-hidden="true">↗</span>
-            </a>
-          )}
-        </div>
-      </div>
+    <article className="game-card">
+      {game.playUrl ? (
+        <a className="game-card-link" href={game.playUrl} target="_blank" rel="noreferrer">
+          {content}
+        </a>
+      ) : (
+        <div className="game-card-link">{content}</div>
+      )}
     </article>
   )
 }
@@ -54,25 +35,25 @@ function GameArticle({ game }) {
 function GamesPage() {
   return (
     <div className="games-page">
-      <section className="games-hero" aria-labelledby="games-title">
-        <div className="container games-hero-inner">
-          <a className="games-back" href="/">← Portfolio</a>
-          <p className="games-kicker">GAME DEVELOPMENT ARCHIVE</p>
-          <h1 id="games-title">Games</h1>
-          <p className="games-lead">
-            UnityとC#で制作したゲームの紹介。ルール設計、CPU思考、オンライン対戦まで実装。
-          </p>
-          <dl className="games-overview">
-            <div><dt>Projects</dt><dd>04</dd></div>
-            <div><dt>Core tools</dt><dd>Unity / C#</dd></div>
-            <div><dt>Style</dt><dd>Solo + Team</dd></div>
-          </dl>
+      <section className="games-showcase" aria-labelledby="games-title">
+        <div className="container">
+          <div className="games-heading">
+            <h1 id="games-title">Games</h1>
+          </div>
+          <div className="game-sections">
+            {gameSections.map((section) => (
+              <section className="game-section" aria-labelledby={section.id + '-title'} key={section.id}>
+                <h2 id={section.id + '-title'}>{section.title}</h2>
+                <div className="games-grid">
+                  {games.filter((game) => game.category === section.id).map((game) => (
+                    <GameCard game={game} key={game.id} />
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
         </div>
       </section>
-
-      <div className="container games-list">
-        {games.map((game) => <GameArticle game={game} key={game.id} />)}
-      </div>
 
       <aside className="game-tool" aria-labelledby="game-tool-title">
         <div className="container game-tool-inner">
@@ -89,10 +70,7 @@ function GamesPage() {
 
       <section className="games-source">
         <div className="container games-source-inner">
-          <div>
-            <p className="games-kicker">SOURCE & MORE</p>
-            <h2>制作物の全体を見る</h2>
-          </div>
+          <p>そのほかの制作物</p>
           <a href={repositoryUrl} target="_blank" rel="noreferrer">
             GitHub Portfolio <span aria-hidden="true">↗</span>
           </a>

@@ -1,10 +1,7 @@
 import { lazy, Suspense } from 'react'
-import About from './components/About.jsx'
-import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
-import Skills from './components/Skills.jsx'
 import { portfolio } from './data/portfolio.js'
 
 const GamesPage = lazy(() => import('./components/GamesPage.jsx'))
@@ -21,15 +18,10 @@ function App() {
             <GamesPage />
           </Suspense>
         ) : (
-          <>
-            <Hero profile={portfolio} />
-            <About profile={portfolio} />
-            <Skills skills={portfolio.skills} />
-            <Contact links={portfolio.links} />
-          </>
+          <Hero profile={portfolio} />
         )}
       </main>
-      <Footer name={portfolio.name} />
+      {isGamesPage && <Footer name={portfolio.name} />}
     </>
   )
 }

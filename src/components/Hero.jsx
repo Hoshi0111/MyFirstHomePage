@@ -1,10 +1,6 @@
 const constellationLinks = [
-  { id: 'about', label: 'About', href: '#about' },
   { id: 'games', label: 'Games', href: '/games' },
-  { id: 'skills', label: 'Skills', href: '#skills' },
   { id: 'github', label: 'GitHub', external: true },
-  { id: 'contact', label: 'Contact', href: '#contact' },
-  { id: 'email', label: 'Email' },
 ]
 
 let starSeed = 20260726
@@ -26,10 +22,6 @@ function Hero({ profile }) {
   const links = constellationLinks.map((link) => {
     if (link.id === 'github') {
       return { ...link, href: profile.links.github.href }
-    }
-
-    if (link.id === 'email') {
-      return { ...link, href: profile.links.email.href }
     }
 
     return link
@@ -55,8 +47,7 @@ function Hero({ profile }) {
           preserveAspectRatio="none"
           aria-hidden="true"
         >
-          <path d="M10 26 L30 18 L48 27 L64 53 L48 76 L27 60 Z" />
-          <path d="M10 26 L48 27 L27 60 L64 53" />
+          <path d="M30 18 L48 27" />
         </svg>
         {links.map((link) => (
           <a
