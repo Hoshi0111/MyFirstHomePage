@@ -310,6 +310,12 @@ h3 {
   left: 48%;
 }
 
+.star-site {
+  --star-size: 18px;
+  top: 16%;
+  left: 66%;
+}
+
 .star-contact {
   --star-size: 16px;
   top: 53%;

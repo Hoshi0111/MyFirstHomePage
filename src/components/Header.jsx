@@ -8,6 +8,7 @@ function Header({ name }) {
         <nav aria-label="メインナビゲーション">
           <ul className="nav-list">
             <li><a href="/games">Games</a></li>
+            <li><a href="https://educationpage.hoshito-n0111.workers.dev">Site</a></li>
           </ul>
         </nav>
       </div>

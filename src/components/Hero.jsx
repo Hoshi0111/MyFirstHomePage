@@ -1,5 +1,11 @@
 const constellationLinks = [
   { id: 'games', label: 'Games', href: '/games' },
+  {
+    id: 'site',
+    label: 'Site',
+    href: 'https://educationpage.hoshito-n0111.workers.dev',
+    external: true,
+  },
   { id: 'github', label: 'GitHub', external: true },
 ]
 
@@ -48,6 +54,7 @@ function Hero({ profile }) {
           aria-hidden="true"
         >
           <path d="M30 18 L48 27" />
+          <path d="M48 27 L66 16" />
         </svg>
         {links.map((link) => (
           <a
